@@ -13,3 +13,9 @@ after_success:
   - docker build  -t futuroz/muti-nginx ./nginx
   - docker build  -t futuroz/muti-server ./server
   - docker build  -t futuroz/muti-worker ./worker
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push futuroz/muti-client
+  - docker push futuroz/muti-nginx
+  - docker push futuroz/muti-server
+  - docker push futuroz/muti-worker
+
