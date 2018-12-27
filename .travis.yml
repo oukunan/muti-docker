@@ -9,13 +9,12 @@ script:
   - docker run futuroz/react-test npm test -- --coverage
 
 after_success:
-  - docker build  -t futuroz/muti-client ./client
-  - docker build  -t futuroz/muti-nginx ./nginx
-  - docker build  -t futuroz/muti-server ./server
-  - docker build  -t futuroz/muti-worker ./worker
+  - docker build  -t futuroz/multi-client ./client
+  - docker build  -t futuroz/multi-nginx ./nginx
+  - docker build  -t futuroz/multi-server ./server
+  - docker build  -t futuroz/multi-worker ./worker
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  - docker push futuroz/muti-client
-  - docker push futuroz/muti-nginx
-  - docker push futuroz/muti-server
-  - docker push futuroz/muti-worker
-
+  - docker push futuroz/multi-nginx
+  - docker push futuroz/multi-server
+  - docker push futuroz/multi-worker
+  - docker push futuroz/multi-client
